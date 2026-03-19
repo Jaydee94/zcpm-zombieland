@@ -196,6 +196,30 @@
       outline: none;
     }
 
+    /* ── Server banner ──────────────────────────────────────────── */
+    .server-banner {
+      margin-top: 2rem;
+      display: inline-block;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(230, 57, 70, 0.2);
+      transition: box-shadow var(--transition), transform var(--transition);
+      animation-delay: 0.45s;
+    }
+
+    .server-banner:hover,
+    .server-banner:focus-visible {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(230, 57, 70, 0.5);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .server-banner img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
     /* ── Main content ───────────────────────────────────────────── */
     main {
       width: 100%;
@@ -552,6 +576,7 @@
     .hero h1      { animation-delay: 0.15s; }
     .hero .tagline{ animation-delay: 0.25s; }
     .hero-cta     { animation-delay: 0.35s; }
+    .server-banner{ animation-delay: 0.45s; }
 
     /* ── Responsive tweaks ──────────────────────────────────────── */
     @media (max-width: 600px) {
@@ -599,6 +624,9 @@
     <p class="tagline">Survive. Build. Dominate the Horde.</p>
     <a class="hero-cta" href="#join">
       <span aria-hidden="true">☣</span> Join the Server
+    </a>
+    <a class="server-banner" href="https://7d2d.net" target="_blank" rel="noopener" aria-label="ZCPM Zombieland live server status on 7d2d.net">
+      <img src="https://7d2d.net/banner/MjI4OTZ8MzU4NDY=" alt="ZCPM Zombieland – Live server status" width="400" height="80" loading="lazy" onerror="this.closest('a').hidden=true" />
     </a>
   </header>
 
@@ -802,7 +830,7 @@
                 <span class="mod-filename">HybridLearnByUse.zip</span>
                 <span class="mod-desc">Hybrid learn-by-using skill progression system</span>
               </span>
-              <span class="mod-size">—</span>
+              <span class="mod-size" title="Size not available">n/a</span>
             </li>
           </ul>
         </div>
