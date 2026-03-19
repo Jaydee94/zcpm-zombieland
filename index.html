@@ -703,8 +703,9 @@
           </p>
           <ul class="mod-list">
             <li>
-              <span class="mod-name">
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
                 <span class="mod-filename">TFP_WebServer.zip</span>
+                <span class="mod-desc">Integrated web dashboard and server API</span>
               </span>
               <span class="mod-size">13 MB</span>
             </li>
@@ -722,22 +723,10 @@
               </span>
               <span class="mod-size">20 KB</span>
             </li>
-          </ul>
-        </div>
-
-        <!-- Client + Server (both) -->
-        <div class="card">
-          <span class="card-icon" aria-hidden="true">💻</span>
-          <h2>Client &amp; Server</h2>
-          <p style="font-size:0.85rem;color:var(--clr-muted);margin-bottom:0.25rem;">
-            These mods must be installed on <strong>both the server and your PC</strong>.
-            Download them and place them in your local <code>Mods</code> folder before joining.
-          </p>
-          <ul class="mod-list">
             <li>
               <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
                 <span class="mod-filename">0_TFP_Harmony.zip</span>
-                <span class="mod-desc">Required Harmony modding framework — load this first</span>
+                <span class="mod-desc">Required Harmony modding framework</span>
               </span>
               <span class="mod-size">2 MB</span>
             </li>
@@ -813,13 +802,6 @@
             </li>
             <li>
               <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
-                <span class="mod-filename">CraftFromContainers.zip</span>
-                <span class="mod-desc">Craft items using resources from nearby containers</span>
-              </span>
-              <span class="mod-size">32 KB</span>
-            </li>
-            <li>
-              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
                 <span class="mod-filename">LootableZombieCorpseV2.7.0.zip</span>
                 <span class="mod-desc">Allows looting zombie corpses</span>
               </span>
@@ -831,6 +813,25 @@
                 <span class="mod-desc">Hybrid learn-by-using skill progression system</span>
               </span>
               <span class="mod-size" title="Size not available">n/a</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Client + Server (both) -->
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">💻</span>
+          <h2>Client &amp; Server</h2>
+          <p style="font-size:0.85rem;color:var(--clr-muted);margin-bottom:0.25rem;">
+            This mod must be installed on <strong>both the server and your PC</strong>.
+            Download it and place it in your local <code>Mods</code> folder before joining.
+          </p>
+          <ul class="mod-list">
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">CraftFromContainers.zip</span>
+                <span class="mod-desc">Craft items using resources from nearby containers</span>
+              </span>
+              <span class="mod-size">32 KB</span>
             </li>
           </ul>
         </div>
@@ -861,13 +862,12 @@
         <div class="install-card">
           <h3><span aria-hidden="true">💻</span> Client-Side Installation (Player Guide)</h3>
           <ol class="steps">
-            <li><span>Download all mods listed under <em>Client &amp; Server</em> above. Ask the server admin for the download links.</span></li>
+            <li><span>Download <strong><code>CraftFromContainers.zip</code></strong> — ask the server admin for the download link.</span></li>
             <li><span>Locate your 7 Days to Die installation folder. In Steam: right-click the game → <em>Manage → Browse local files</em>.</span></li>
             <li><span>Open (or create) the <code>Mods</code> folder inside the game directory.</span></li>
-            <li><span>Extract each mod ZIP so that every mod's own folder lands <em>directly inside</em> <code>Mods/</code> — e.g., <code>Mods/0_TFP_Harmony/</code>, <code>Mods/AGF-V2-HUDPlus-1Main-v5.3.0/</code>.</span></li>
-            <li><span>Install <strong><code>0_TFP_Harmony.zip</code> first</strong> — it is a required framework for the other mods.</span></li>
+            <li><span>Extract the ZIP so the mod folder lands <em>directly inside</em> <code>Mods/</code> — i.e., <code>Mods/CraftFromContainers/</code>.</span></li>
             <li><span>If your server has <strong>Easy Anti-Cheat (EAC) disabled</strong>, launch the game via the <em>"Play without EAC"</em> option or the <code>7DaysToDie.exe</code> launcher.</span></li>
-            <li><span>Join the server. Press <kbd>F1</kbd> and check the console log for <em>"Loading mod …"</em> to confirm your mods are active.</span></li>
+            <li><span>Join the server. Press <kbd>F1</kbd> and check the console log for <em>"Loading mod …"</em> to confirm the mod is active.</span></li>
           </ol>
         </div>
 
