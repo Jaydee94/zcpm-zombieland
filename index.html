@@ -363,6 +363,142 @@
       font-weight: 600;
     }
 
+    /* ── Mods section ───────────────────────────────────────────── */
+    .mods-section {
+      margin-top: 3rem;
+    }
+
+    .mods-section > .section-label {
+      margin-bottom: 0.5rem;
+    }
+
+    .mods-section > p {
+      color: var(--clr-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mod-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .mod-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--clr-muted);
+      border-bottom: 1px solid var(--clr-border);
+      padding-bottom: 0.45rem;
+    }
+
+    /* suppress the default .card ul li::before bullet for mod list items */
+    .mod-list li::before {
+      content: none;
+    }
+
+    .mod-list li:last-child {
+      border-bottom: none;
+    }
+
+    .mod-name {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mod-filename {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--clr-text);
+      word-break: break-all;
+    }
+
+    .mod-size {
+      color: var(--clr-muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .mod-desc {
+      font-size: 0.78rem;
+      color: var(--clr-muted);
+      font-style: italic;
+    }
+
+    .mod-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    .mod-tag-server {
+      background: rgba(230, 57, 70, 0.12);
+      color: var(--clr-red);
+      border: 1px solid rgba(230, 57, 70, 0.3);
+    }
+
+    .mod-tag-client {
+      background: rgba(80, 180, 120, 0.12);
+      color: #50b478;
+      border: 1px solid rgba(80, 180, 120, 0.3);
+    }
+
+    .install-card {
+      background: var(--clr-surface2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      margin-bottom: 1.25rem;
+    }
+
+    .install-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-text);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .install-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+      gap: 1.25rem;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--clr-text);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
     /* ── Footer ─────────────────────────────────────────────────── */
     footer {
       width: 100%;
@@ -451,6 +587,7 @@
       <li><a href="#details">Details</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#join">How to Join</a></li>
+      <li><a href="#mods">Mods</a></li>
       <li><a href="https://github.com/Jaydee94/zcpm-zombieland" target="_blank" rel="noopener">GitHub ↗</a></li>
     </ul>
   </nav>
@@ -520,6 +657,195 @@
       </div>
 
     </div>
+
+    <!-- ── Mods ─────────────────────────────────────────────────── -->
+    <section class="mods-section" id="mods" aria-labelledby="mods-heading">
+      <p class="section-label" id="mods-heading">Mod List</p>
+      <p>The server runs a curated set of mods. Some are installed on the server only; others must also be installed locally on your PC before joining.</p>
+
+      <div class="mods-grid">
+
+        <!-- Server-side only -->
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🖥️</span>
+          <h2>Server-Side Only</h2>
+          <p style="font-size:0.85rem;color:var(--clr-muted);margin-bottom:0.25rem;">
+            These mods are installed <strong>only on the dedicated server</strong>.
+            Players do <strong>not</strong> need to download or install them.
+          </p>
+          <ul class="mod-list">
+            <li>
+              <span class="mod-name">
+                <span class="mod-filename">TFP_WebServer.zip</span>
+              </span>
+              <span class="mod-size">13 MB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">TFP_MapRendering.zip</span>
+                <span class="mod-desc">Renders the world map for the web dashboard</span>
+              </span>
+              <span class="mod-size">38 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">TFP_CommandExtensions.zip</span>
+                <span class="mod-desc">Extended server admin commands</span>
+              </span>
+              <span class="mod-size">20 KB</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Client + Server (both) -->
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">💻</span>
+          <h2>Client &amp; Server</h2>
+          <p style="font-size:0.85rem;color:var(--clr-muted);margin-bottom:0.25rem;">
+            These mods must be installed on <strong>both the server and your PC</strong>.
+            Download them and place them in your local <code>Mods</code> folder before joining.
+          </p>
+          <ul class="mod-list">
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">0_TFP_Harmony.zip</span>
+                <span class="mod-desc">Required Harmony modding framework — load this first</span>
+              </span>
+              <span class="mod-size">2 MB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">AGF-V2-Backpack120-1Plus-v1.2.1.zip</span>
+                <span class="mod-desc">Expanded backpack (120 slots)</span>
+              </span>
+              <span class="mod-size">309 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">AGF-V2-HUDPlus-1Main-v5.3.0.zip</span>
+                <span class="mod-desc">Enhanced heads-up display</span>
+              </span>
+              <span class="mod-size">129 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">(TMO) Mega Craftables Pack v1.0_v2.4Stable.zip</span>
+                <span class="mod-desc">Large collection of additional craftable items</span>
+              </span>
+              <span class="mod-size">131 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">GSHydroponicsRenewed.zip</span>
+                <span class="mod-desc">Hydroponics farming system</span>
+              </span>
+              <span class="mod-size">127 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">noSkills_StackSizeLarge.zip</span>
+                <span class="mod-desc">Increased item stack sizes</span>
+              </span>
+              <span class="mod-size">23 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">DecalPickupandStaticTrash.zip</span>
+                <span class="mod-desc">Pickable decals and interactive static objects</span>
+              </span>
+              <span class="mod-size">14 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">Xample_MarkersMod.zip</span>
+                <span class="mod-desc">Custom map markers</span>
+              </span>
+              <span class="mod-size">24 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">(TMO) LootAPalooza v1_v2.4Stable.zip</span>
+                <span class="mod-desc">Enhanced and expanded loot tables</span>
+              </span>
+              <span class="mod-size">57 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">ErionaxFirearmsAdditions.zip</span>
+                <span class="mod-desc">Additional firearms and weapons</span>
+              </span>
+              <span class="mod-size">44 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">zzzScomar82_Health-Bar.zip</span>
+                <span class="mod-desc">Enemy health bar display</span>
+              </span>
+              <span class="mod-size">1 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">CraftFromContainers.zip</span>
+                <span class="mod-desc">Craft items using resources from nearby containers</span>
+              </span>
+              <span class="mod-size">32 KB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">LootableZombieCorpseV2.7.0.zip</span>
+                <span class="mod-desc">Allows looting zombie corpses</span>
+              </span>
+              <span class="mod-size">1 MB</span>
+            </li>
+            <li>
+              <span class="mod-name" style="flex-direction:column;align-items:flex-start;">
+                <span class="mod-filename">HybridLearnByUse.zip</span>
+                <span class="mod-desc">Hybrid learn-by-using skill progression system</span>
+              </span>
+              <span class="mod-size">—</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Installation instructions -->
+      <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--clr-text);margin:2rem 0 1rem;">
+        📦 How to Install Mods
+      </h2>
+
+      <div class="install-cards-grid">
+
+        <!-- Server install -->
+        <div class="install-card">
+          <h3><span aria-hidden="true">🖥️</span> Server-Side Installation</h3>
+          <ol class="steps">
+            <li><span>Connect to your dedicated server via FTP / SFTP or your hosting panel's file manager.</span></li>
+            <li><span>Navigate to the server root folder — the same directory that contains <code>7DaysToDieServer</code> or <code>startserver.sh</code>.</span></li>
+            <li><span>Open (or create) the <code>Mods</code> folder in the server root.</span></li>
+            <li><span>Extract each mod ZIP file so that every mod's own folder lands <em>directly inside</em> <code>Mods/</code> — e.g., <code>Mods/TFP_WebServer/</code>, <code>Mods/TFP_MapRendering/</code>.</span></li>
+            <li><span>Restart the dedicated server. Check the server log for <em>"Loaded mod: …"</em> lines to confirm each mod loaded.</span></li>
+            <li><span>For the web dashboard (<code>TFP_WebServer</code>), make sure <code>WebDashboardEnabled=true</code> and <code>EnableMapRendering=true</code> in your <code>serverconfig.xml</code>.</span></li>
+          </ol>
+        </div>
+
+        <!-- Client install -->
+        <div class="install-card">
+          <h3><span aria-hidden="true">💻</span> Client-Side Installation (Player Guide)</h3>
+          <ol class="steps">
+            <li><span>Download all mods listed under <em>Client &amp; Server</em> above. Ask the server admin for the download links.</span></li>
+            <li><span>Locate your 7 Days to Die installation folder. In Steam: right-click the game → <em>Manage → Browse local files</em>.</span></li>
+            <li><span>Open (or create) the <code>Mods</code> folder inside the game directory.</span></li>
+            <li><span>Extract each mod ZIP so that every mod's own folder lands <em>directly inside</em> <code>Mods/</code> — e.g., <code>Mods/0_TFP_Harmony/</code>, <code>Mods/AGF-V2-HUDPlus-1Main-v5.3.0/</code>.</span></li>
+            <li><span>Install <strong><code>0_TFP_Harmony.zip</code> first</strong> — it is a required framework for the other mods.</span></li>
+            <li><span>If your server has <strong>Easy Anti-Cheat (EAC) disabled</strong>, launch the game via the <em>"Play without EAC"</em> option or the <code>7DaysToDie.exe</code> launcher.</span></li>
+            <li><span>Join the server. Press <kbd>F1</kbd> and check the console log for <em>"Loading mod …"</em> to confirm your mods are active.</span></li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
