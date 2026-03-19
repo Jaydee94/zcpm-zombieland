@@ -320,32 +320,6 @@
       font-size: 0.8rem;
     }
 
-    /* ── Badges ─────────────────────────────────────────────────── */
-    .badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(230, 57, 70, 0.1);
-      color: var(--clr-red);
-      border: 1px solid rgba(230, 57, 70, 0.3);
-      border-radius: 999px;
-      padding: 0.3rem 0.85rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: background var(--transition), border-color var(--transition);
-    }
-
-    .badge:hover {
-      background: rgba(230, 57, 70, 0.2);
-      border-color: rgba(230, 57, 70, 0.5);
-    }
 
     /* ── Steps list ─────────────────────────────────────────────── */
     .steps {
@@ -578,6 +552,42 @@
     .hero-cta     { animation-delay: 0.35s; }
     .server-banner{ animation-delay: 0.45s; }
 
+    /* ── Live server info ───────────────────────────────────────── */
+    .live-info {
+      border-top: 1px solid var(--clr-border);
+      padding-top: 0.85rem;
+      margin-top: 0.85rem;
+    }
+
+    .live-info-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .live-info ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .live-status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .live-status-dot.online  { background: #4caf50; box-shadow: 0 0 6px #4caf50; }
+    .live-status-dot.offline { background: var(--clr-muted); }
+
     /* ── Responsive tweaks ──────────────────────────────────────── */
     @media (max-width: 600px) {
       .navbar-links { display: none; }
@@ -610,7 +620,6 @@
     <ul class="navbar-links">
       <li><a href="#about">About</a></li>
       <li><a href="#details">Details</a></li>
-      <li><a href="#features">Features</a></li>
       <li><a href="#join">How to Join</a></li>
       <li><a href="#mods">Mods</a></li>
       <li><a href="https://github.com/Jaydee94/zcpm-zombieland" target="_blank" rel="noopener">GitHub ↗</a></li>
@@ -657,18 +666,8 @@
           <li>PvP: <strong>Optional / Friendly</strong></li>
           <li>Mods: <strong>ZCPM</strong> (Zombie &amp; Crafting Pack Mod)</li>
         </ul>
-      </div>
-
-      <!-- Features -->
-      <div class="card" id="features">
-        <span class="card-icon" aria-hidden="true">🧟</span>
-        <h2>Features</h2>
-        <div class="badge-group">
-          <span class="badge">⚒ Custom Mods</span>
-          <span class="badge">👥 Active Community</span>
-          <span class="badge">🎉 Regular Events</span>
-          <span class="badge">🖥 Dedicated Hardware</span>
-          <span class="badge">☣ Zombie Hordes</span>
+        <div id="live-server-info" style="margin-top:1rem;">
+          <p style="font-size:0.82rem;color:var(--clr-muted);">Loading live server status…</p>
         </div>
       </div>
 
@@ -890,6 +889,64 @@
       </a>
     </div>
   </footer>
+  <script>
+    /* ── Live server info from 7d2d.net banner source ───────────── */
+    (function () {
+      const BANNER_B64   = 'MjI4OTZ8MzU4NDY=';
+      const API_URL      = 'https://7d2d.net/api/server/' + BANNER_B64;
+      const container    = document.getElementById('live-server-info');
+      const ESC_MAP      = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+
+      function escHtml(str) {
+        return str.replace(/[&<>"']/g, function (c) { return ESC_MAP[c]; });
+      }
+
+      function renderInfo(data) {
+        var online;
+        if (data.status !== undefined) {
+          online = data.status === 'online' || data.status === true;
+        } else if (data.online !== undefined) {
+          online = data.online === true;
+        } else {
+          online = data.players !== undefined;
+        }
+
+        const players = data.players    ?? data.current_players ?? '–';
+        const maxPl   = data.max_players ?? data.maxplayers     ?? '–';
+        const version = data.version    ?? data.game_version    ?? '–';
+        const map     = data.map        ?? data.world           ?? '–';
+        const name    = data.name       ?? data.server_name     ?? 'ZCPM Zombieland';
+
+        container.innerHTML =
+          '<div class="live-info">' +
+            '<p class="live-info-label">Live Status</p>' +
+            '<ul>' +
+              '<li><span class="live-status-dot ' + (online ? 'online' : 'offline') + '" aria-hidden="true"></span>' +
+                '<strong>' + (online ? 'Online' : 'Offline') + '</strong></li>' +
+              '<li>Server: <strong>' + escHtml(String(name)) + '</strong></li>' +
+              '<li>Players: <strong>' + escHtml(String(players)) + ' / ' + escHtml(String(maxPl)) + '</strong></li>' +
+              '<li>Version: <strong>' + escHtml(String(version)) + '</strong></li>' +
+              '<li>Map: <strong>' + escHtml(String(map)) + '</strong></li>' +
+            '</ul>' +
+          '</div>';
+      }
+
+      function renderError() {
+        container.innerHTML =
+          '<div class="live-info">' +
+            '<p style="font-size:0.82rem;color:var(--clr-muted);">Live status unavailable.</p>' +
+          '</div>';
+      }
+
+      fetch(API_URL)
+        .then(function (res) {
+          if (!res.ok) { throw new Error('HTTP ' + res.status); }
+          return res.json();
+        })
+        .then(renderInfo)
+        .catch(renderError);
+    }());
+  </script>
 
 </body>
 </html>
